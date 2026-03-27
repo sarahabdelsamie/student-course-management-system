@@ -40,7 +40,7 @@ Enter your choice: 1
 Enter Student ID: 1001
 Enter Name: Sarah
 Enter GPA: 3.5
-Student added successfully!
+Student added successfully.
 ```
 
 ## Requirements
