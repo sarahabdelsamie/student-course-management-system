@@ -34,7 +34,8 @@ Example:
 7. Sort Students by GPA
 8. Search Student by Name
 9. Save Data
-10. Exit
+10. Display Saved Data
+11. Exit
 
 Enter your choice: 1
 Enter Student ID: 1001
@@ -56,6 +57,7 @@ Student added successfully.
 - Show all courses for a specific student
 - Sort students by GPA (descending)
 - Save data to file and load automatically on startup
+- Display saved data directly from file
 
 ## Project Structure
 
