@@ -254,9 +254,45 @@ void searchByName() {
         cout << "No student found with name: " << name << "\n";
     }
 }
+void displaySavedData() {
+    ifstream file("students.txt");
 
+    if (!file.is_open()) {
+        cout << "No saved data found.\n";
+        return;
+    }
+
+    string line;
+    cout << "\n Saved Students Data \n";
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string token;
+        vector<string> tokens;
+
+        while (getline(ss, token, ',')) {
+            tokens.push_back(token);
+        }
+
+        if (tokens.size() >= 3) {
+            cout << "ID: " << tokens[0]
+                << " , Name: " << tokens[1]
+                << " , GPA: " << tokens[2] << endl;
+
+            if (tokens.size() > 3) {
+                cout << "Courses:\n";
+                for (int i = 3; i < tokens.size(); i++) {
+                    cout << "- " << tokens[i] << endl;
+                }
+            }
+            cout << "----------------------\n";
+        }
+    }
+
+    file.close();
+}
 int main() {
-    loadFromFile();  
+    loadFromFile();
     int choice;
 
     while (true) {
@@ -268,9 +304,10 @@ int main() {
         cout << "5. Enroll Student in Course\n";
         cout << "6. Show Student Courses\n";
         cout << "7. Sort Students by GPA\n";
-        cout << "8. Search Student by Name\n"; 
-        cout << "9. Save Data\n";              
-        cout << "10. Exit\n";
+        cout << "8. Search Student by Name\n";
+        cout << "9. Save Data\n";
+        cout << "10. Display Saved Data\n";
+        cout << "11. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -284,8 +321,9 @@ int main() {
         case 7:  sortByGPA();             break;
         case 8:  searchByName();          break;
         case 9:  saveToFile();            break;
-        case 10:
-            saveToFile(); 
+        case 10: displaySavedData(); break;
+        case 11:
+            saveToFile();
             cout << "Thanks for using.\n";
             return 0;
         default:
